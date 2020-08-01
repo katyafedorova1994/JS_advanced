@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>ITEA-JS ADVANCED - LESSON 2: CLASSWORK 3</title>
+  <link rel="stylesheet" href="css/style.min.css" />
+</head>
+<body>
+  <div class="buttons" id="target">
+    <button class="popup__button" id="popup_1" data-popup="1"> Show popup 1</button>
+    <button class="popup__button" id="popup_2" data-popup="2"> Show popup 2</button>
+    <button class="popup__button" id="popup_3" data-popup="3"> Show popup 3</button>
+  </div>
+
+  <div class="popup" id="popup">
+
+    <div class="popup__body">
+      <button class="popup__close" id="popup__close">Close popup</button>
+      <div class="popup__container" id="popup__container">
+        <div class="popup__item" data-popup="1"><h2>I'm first popup</h2></div>
+        <div class="popup__item" data-popup="2"><h2>I'm second popup</h2></div>
+        <div class="popup__item" data-popup="3"><h2>I'm third popup</h2></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var target = document.getElementById("target");
+    console.log(target);
+
+    target.onclick = function(e){
+      if(e.target.classList.contains("popup__button")){
+        console.log(e.target);//<div class="buttons" id="target">..</div>
+        console.log("s");
+
+        var data = e.target.dataset.popup;
+        console.log(data);//1 2 3 button
+
+        var div = document.querySelector(".popup")
+        div.classList.add("show");//display flex
+        console.log(div);
+
+        var list = div.querySelectorAll(".popup__item");//syzit krug poiska
+        console.log(list);//Node List
+        list.forEach(function(item){
+          if(item.dataset.popup == data)//dataset.popup = dataset.popup (button)
+            item.classList.add("show");//item = div.popup__item
+        });
+      }
+    };
+
+    var closeb = document.querySelector("#popup__close");
+    closeb.onclick = function(e){
+      var popups = document.querySelectorAll(".show");
+      popups.forEach(function(item){
+      item.classList.remove("show");//or toggle
+      });
+    }
+
+
+    
+    /*
+
+      Задача: Сделать корректно работающее всплывающее окно.
+      Условие: Узменять HTML разметку выше - нельзя.
+      При нажании на одну из кнопок, должно открытся окно с соответствующим data- аттрибутом.
+      При нажатии на кнопку close окно дожно закрываться.
+
+    */
+  </script>
+</body>
+</html>

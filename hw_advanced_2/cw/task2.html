@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>ITEA-JS ADVANCED - LESSON 2: CLASSWORK 2</title>
+  <link rel="stylesheet" href="css/style.min.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="testBlock hover">
+      <button class="iButton" id="mouseHover">1. Hover!</button>
+      <ul id="hoverResult" class="resultBlock">
+        <li class="red">Hovered!</li>
+        <li class="blue">Hovered!</li>
+        <li class="orange">Hovered!</li>
+        <li class="green">Hovered!</li>
+        <li class="purple">Hovered!</li>
+      </ul>
+    </div>
+
+    <div class="testBlock click">
+      <button class="iButton" id="mouseClick">2. Click for do things</button>
+      <div id="clickResult" class="resultBlock one two three four five six"></div>
+    </div>
+
+    <div class="testBlock random">
+      <button class="iButton" id="mouseLight">3. Click for turn on lights</button>
+      <div id="lightResult" class="resultBlock"></div>
+    </div>
+
+    <div class="testBlock keyboard">
+      <button class="iButton" id="keyboardButton">4. Press any key</button>
+      <div id="keyboardResult" class="resultBlock key-colors"></div>
+    </div>
+
+  </div>
+
+  <script>
+   
+  //  1.На ховер(onmouseenter) повесить обработчик который будет при каждом наведении
+  //       на кнопку будет выводить в блок результатом елемент li с текстом "hovered!"
+  //       у которого будет один из следующих класов:
+  //       red blue green orange purple
+
+// var mouseHover = document.getElementById('mouseHover');
+
+// mouseHover.onmouseenter = function(){
+  
+//   var colors = ["red", "blue", "green", "orange", "purple"];
+//   var randomNum = Math.floor(Math.random() * 5);
+//   console.log(colors[randomNum]);//red
+//   console.log(randomNum);//01234
+
+//   var hoverRes = document.getElementById('hoverResult');
+//   var getAllLi = hoverRes.querySelectorAll('li');
+//   getAllLi.forEach(function(item) {
+//     item.style.display = 'none';
+//   });
+
+
+//   var liRed = document.querySelector('.red');
+//   var liBlue = document.querySelector('.blue');
+//   var liGreen = document.querySelector('.green');
+//   var liOrange = document.querySelector('.orange');
+//   var liPurple = document.querySelector('.purple');
+
+//   if (randomNum == 0) {
+//     liRed.style.display = 'block';
+//   } 
+//   else if (randomNum == 1) {
+//     liBlue.style.display = 'block';
+//   } 
+//   else if (randomNum == 2) {
+//     liGreen.style.display = 'block';
+//   } 
+//   else if (randomNum == 3) {
+//     liOrange.style.display = 'block';
+//   } 
+//   else {
+//     liPurple.style.display = 'block';
+//   }    
+// }
+
+
+
+  // 2.На кнопку клика(onclick) повесить обработчик который будет удалять классы с блока с результатом по очереди в таком порядке:
+  //     six > two > three > four > one > five
+  //     после того как блок окажется пустым, добавить их в порядке возрастания
+  //     one > two > three ... > six
+  
+// var clickIndex = 0;
+
+// var clickRes = document.getElementById('clickResult');
+
+// mouseClick.onclick = function(){
+//  clickIndex++;
+//  console.log(clickIndex);
+//  if(clickIndex == 1){
+//    clickRes.classList.remove("six");
+//  }
+//  else if(clickIndex == 2){
+//    clickRes.classList.remove("two");
+//  }
+//  else if(clickIndex == 3){
+//    clickRes.classList.remove("three");
+//  }
+//  else if(clickIndex == 4){
+//    clickRes.classList.remove("four");
+//  }
+//  else if(clickIndex == 5){
+//    clickRes.classList.remove("one");
+//  }
+//  else if(clickIndex == 6){
+//    clickRes.classList.remove("five");
+//  }
+
+//  else if(clickIndex == 7){
+//    clickRes.classList.add("one");
+//  }
+//  else if(clickIndex == 8){
+//    clickRes.classList.add("two");
+//  }
+//  else if(clickIndex == 9){
+//    clickRes.classList.add("three");
+//  }
+//  else if(clickIndex == 10){
+//    clickRes.classList.add("four");
+//  }
+//  else if(clickIndex == 11){
+//    clickRes.classList.add("five");
+//  }
+//  else if(clickIndex == 12){
+//    clickRes.classList.add("six");
+//  }
+//  else{
+//    console.log("end");
+//  }
+// }
+
+
+// 3. На кнопку клика (Light) повесить обработчик, который будет выводить в блок с результатом (lightResult) поочередно один из цветов светофора:
+//       Цикл: Off -> Red -> Yellow -> Green -> Off
+
+      // var counter = 0;
+      // var colors = ["red", "yellow", "green", "white"];
+
+      // mouseLight.onclick = function(){
+      //   // counter++;
+      //   lightResult.style.background = colors[counter];
+      //   counter++;
+      //   if (counter > 3) {
+      //     counter = 0;
+      //   }
+      // }
+
+
+// 4. На кнопку с обработчиком нажатия (onkeydown) повесить обработчик который будет:
+
+// - Выводить в блок с результатом(keyboardResult) число нажатий на любую из клавиш клавиатуры.
+// - Давать блоку (keyboardResult) классы, которые соотсветствуют числу кликов:
+
+// Н-р:
+// 1 -> one
+// 3 -> three
+// 5 -> five
+// 11 -> one one
+// 115 -> one one five
+
+      // var counter = 0;
+      // keyboardButton.onkeydown = function(){
+      
+      //   counter++;
+      //   console.log(counter);
+      //   keyboardResult.innerHTML = counter;
+      //   if(counter == 1){
+      //     keyboardResult.classList.add("one");
+      //     console.log(keyboardResult);
+      //   }
+      //   else if(counter == 3){
+      //     keyboardResult.classList.remove("one");
+
+      //     keyboardResult.classList.add("three");
+      //     console.log(keyboardResult);
+      //   }
+      //   else if(counter == 5){
+      //     keyboardResult.classList.remove("three");
+
+      //     keyboardResult.classList.add("five");
+      //     console.log(keyboardResult);
+      //   }
+      //   else if(counter == 11){
+      //     keyboardResult.classList.remove("five");
+
+      //     keyboardResult.classList.add("one", "one");
+      //     console.log(keyboardResult);
+      
+      //   }
+      //   else if(counter == 115){
+      //     keyboardResult.classList.remove("one", "one");
+
+      //     keyboardResult.classList.add("one", "one", "five");
+      //     console.log(keyboardResult);
+      
+      //   }
+      // }
+
+
+    
+
+
+
+
+
+   
+
+
+
+
+      
+  
+
+     
+  
+
+    // var mouseHover = document.getElementById('mouseHover');
+    // var mouseClick = document.getElementById('mouseClick');
+    // var mouseLight = document.getElementById('mouseLight');
+    // var keyboardButton = document.getElementById('keyboardButton');
+
+    // mouseHover.onmouseenter = function(){
+    //   console.log('hover');
+    // }
+
+    // var clickIndex = 0;
+    // var direction = true;
+
+    // mouseClick.onclick = function(){
+    //     console.log('click');
+    // }
+
+
+    // mouseLight.onclick = function(e){
+    //     console.log('light');
+    // }
+
+    // var counter = 0;
+    // keyboardButton.onkeydown = function(){
+    //     console.log('keydown');
+    // }
+  </script>
+</body>
+</html>
