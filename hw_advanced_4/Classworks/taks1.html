@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Forms Task 1</title>
+  <script>
+  
+     /*
+      Задание:
+        Сделать валидацию формы:
+        1. Логин / Пароль не может быть пустым
+        2. Пароли должны совпадть
+        3. Пока не стоит что юзер согласен с лиц. соглашением - кнопка отправки не активна
+
+        + бонус - то поле, которое не прошло валидацию подсвечивать красным.
+                - которое прошло - подсвечивать зеленым.
+    */
+document.addEventListener("DOMContentLoaded", function () {
+    MyValidateForm.addEventListener("click", function(event){
+    var login = document.getElementsByName("login")[0];
+    var pas1 = document.getElementsByName("pas1")[0];
+    var pas2 = document.getElementsByName("pas2")[0]
+    if(pas1.value == pas2.value){
+      console.log(pas1.value, pas2.value);
+    }
+    else{
+      event.preventDefault();
+    }
+  });
+
+  agree.addEventListener('click', function(event) {
+    if (agree.checked) {
+      submit.removeAttribute("disabled");
+    } 
+    else {
+      submit.setAttribute("disabled", "disabled");
+    }
+  })
+      
+});
+
+
+  </script>
+</head>
+<body>
+  <form id="MyValidateForm" >
+    <input type="text" name='login' placeholder="Ваш логин" required/>
+    <input type="password" name='pas1'  placeholder="Ваш пароль" required/>
+    <input type="password" name='pas2' placeholder="Повторите пароль" required />
+    <label for="agree">
+      <span>Вы согласны с лицензионым соглашением.</span>
+      <input type="checkbox" id="agree" />
+    </label>
+    <input type="submit" id="submit" value="Отправить" disabled />
+  </form>
+
+  <style>
+    #MyValidateForm{
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #MyValidateForm input{
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      padding: 10px 20px;
+    }
+    .error{
+        border: 1px solid red;
+    }
+    .OK{
+        border: 1px solid green;
+    }
+    #MyValidateForm input:invalid{
+        border: 1px solid red;
+    }
+   #MyValidateForm input:valid{
+        border: 1px solid green;
+    }
+  </style>
+</body>
+</html>
