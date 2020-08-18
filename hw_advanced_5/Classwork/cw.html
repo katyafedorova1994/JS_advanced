@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-md-6">
+            <div id="encrypt-block">
+              <h3>Введите текст: </h3>
+              <textarea name="user-text" id="text-to-work" cols="40" rows="3"></textarea>
+              <br><br>
+              <div class="form-group">
+                <button class="btn btn-primary" id="encrypt-btn">Зашифровать</button>
+                <button class="btn btn-primary" id="decrypt-btn">Дешифровать</button>
+                <button class="btn btn-danger" id="btn-reset">Очистить</button>
+              </div>
+              <h4>Шаг сдвига:</h4>
+              <select name="user_step" id="encrypt-step" size="1">
+                <option>1</option>
+                <option>2</option>
+                <option selected>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+              <h3>Результат:</h3>
+              <textarea readonly id="output" cols="40" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+    <script>
+
+        /*
+
+    Задание 1:
+
+    Написать обьект Train у которого будут свойства:
+    -имя,
+    -скорость езды
+    -количество пассажиров
+    Методы:
+    Ехать -> Поезд {name} везет { количество пассажиров} со скоростью {speed}
+    Стоять -> Поезд {name} остановился. Скорость {speed}
+    Подобрать пассажиров -> Увеличивает кол-во пассажиров на Х
+*/
+    // let train = {};
+    // train.ima = "Train1";
+    // train.skorost = 100;
+    // train.kol = 12;
+    // train.ehat = function(){
+    //     console.log(this.ima, "veset", this.kol, "passazhirov so skor", this.skorost);
+    // };
+    // train.stoyat = function(){
+    //     console.log(this.ima, "ostanovilsa. Skorost", this.skorost);
+
+    // };
+    // train.podobrat = function(){
+    //     this.kol++;
+    //     console.log(train.kol);
+    // };
+    // console.log(train);
+    // train.ehat();
+    // train.stoyat();
+    // train.podobrat();
+
+/*     Задание 2.
+
+Напишите фунцию, которая изменяет цвет-фона и цвет текста, присваивая к новым цветам
+значение из this.color, this.background
+А так же добавляет элемент h1 с текстом "I know how binding works in JS"
+
+1.1 Ф-я принимает один аргумент,
+второй попадает в него через метод .call(obj)
+
+1.2 Ф-я не принимает никаких аргументов,
+а необходимые настройки полностью передаются через bind
+
+1.3 Ф-я принимает фразу для заголовка,
+обьект с настройками передаем через .apply();
+
+// let colors = {
+//     background: 'purple',
+//     color: 'white'
+//   }
+
+//   // fucntion myCall( color ){
+//   //   document.body.style.background = this.background;
+//   //   document.body.style.color = color;
+//   // }
+//   // myCall.call( colors, 'red' );
+
+  
+
+*/
+
+
+    //   function myCall(color) {
+    //     //   console.log('add context', this);
+    //        document.body.style.background = this.background;
+    //         document.body.style.color = color;
+    //         let h1 = document.createElement("h1");
+    //         h1.innerHTML = "I know how binding works in JS";
+    //         window.document.body.appendChild(h1);
+    //     }  
+    //     let colors = {
+    //         background: 'purple',
+    //         color: 'white'
+    //     }
+    //     myCall.call(colors, "red" ); 
+
+
+    // let colors = {
+    //         background: 'purple',
+    //         color: 'white',
+    //     };
+    // function myCall() {
+    //     document.body.style.background = this.background;
+    //     document.body.style.color = this.color;
+    //     let h1 = document.createElement("h1");
+    //     h1.innerHTML = "I know how binding works in JS";
+    //     window.document.body.appendChild(h1);
+    // }
+    // let a = myCall.bind(colors);
+    // a(); 
+
+
+
+    //     let colors = {
+    //         background: 'purple',
+    //         color: 'white',
+    //     };
+    //     function myCall(text) {
+    //         document.body.style.background = this.background;
+    //         document.body.style.color = this.color;
+    //         let h1 = document.createElement("h1");
+    //         h1.innerHTML = text;
+    //         window.document.body.appendChild(h1);
+    //     }
+    // myCall.apply(colors, ["I know how binding works in JS"]);
+
+
+
+/*
+
+    Задание 3:
+
+    1. Создать ф-ю констурктор которая создаст новую собаку у которой есть имя и порода
+    2. Обьект должен иметь пару свойств (Имя, порода, status)
+    3. Функцию которая производит манипуляцию со свойствами (Собака бежит), (Собака есть)
+    4. Функция которая перебором выводит все свойства
+
+
+    Dog {
+      name: '',
+      breed: '',
+      status: 'idle',
+
+      changeStatus: function(){...},
+      showProps: function(){...}
+    }
+
+    // Перебор свойств и методов обьекта
+    for (key in obj) {
+      console.log( key, obj[key] );
+      /* ... делать что-то с obj[key] ...
+    // }
+*/
+
+
+        // function Dog(name, breed) {
+        //     this.name = name;
+        //     this.breed = breed;
+        //     this.status = 'idle';
+        //     this.changeStatus = function () {
+        //     console.log(this.name, "bezhit", this.name, "est");
+        //     }
+        //     this.showProps = function(){
+        //         for (var key in this) {
+        //         console.log(key);
+        //         }
+        //     } 
+        // }
+        // var a = new Dog("name", "breed");
+        // console.log(a);
+        // a.changeStatus();
+        // a.showProps();
+
+
+        /*
+
+  Задание "Шифр цезаря":
+
+    https://uk.wikipedia.org/wiki/%D0%A8%D0%B8%D1%84%D1%80_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8F
+
+    Написать функцию, которая будет принимать в себя слово и количество
+    симовлов на которые нужно сделать сдвиг внутри.
+
+    Написать функцию дешефратор которая вернет слово в изначальный вид.
+
+    Сделать статичные функции используя bind и метод частичного
+    вызова функции (каррирования), которая будет создавать и дешефровать
+    слова с статично забитым шагом от одного до 5.
+
+
+    const isMobile = document.innerWidth < 768;
+
+    Например:
+      encryptCesar( 3, 'Word');
+      encryptCesar1(...)
+      ...
+      encryptCesar5(...)
+
+      decryptCesar1(3, 'Sdwq');
+      decryptCesar1(...)
+      ...
+      decryptCesar5(...)
+
+      "а".charCodeAt(); // 1072
+      String.fromCharCode(189, 43, 190, 61) // ½+¾
+
+*/
+
+
+
+  
+    </script>
+    <!-- <script type="text/javascript" src="task4.js"></script> -->
+
+</body>
+</html>

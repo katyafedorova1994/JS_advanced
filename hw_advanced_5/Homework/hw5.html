@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hw5</title>
+    
+</head>
+<body>
+    <script>
+/*
+
+  Задание:
+
+    1. Написать конструктор объекта комментария который принимает 3 аргумента
+    ( имя, текст сообщения, ссылка на аватаку);
+
+    {
+      name: '',
+      text: '',
+      avatarUrl: '...jpg'
+      likes: 0
+    }
+      + Создать прототип, в котором будет содержаться ссылка на картинку по умлочанию
+      + В прототипе должен быть метод который увеличивает счетик лайков
+
+    var myComment1 = new Comment(...);
+
+    2. Создать массив из 4х комментариев.
+    var CommentsArray = [myComment1, myComment2...]
+
+    3. Созадть функцию конструктор, которая принимает массив коментариев.
+      И выводит каждый из них на страничку.
+
+    <div id="CommentsFeed"></div>
+
+*/
+    let CommentsFeed = document.createElement("div");
+    document.body.appendChild(CommentsFeed);
+
+    function Comment(name, text, avatarUrl){
+        this.name = name;
+        this.text = text;
+        if(avatarUrl) {
+            this.avatarUrl = avatarUrl;
+        }
+        this.likes = 0;
+    }
+    Comment.prototype = {
+        avatarUrl: "1.jpg",
+        like: function(){
+            this.likes++;
+        }
+    }
+
+    let com1 = new Comment("name1", "text1");
+    let com2 = new Comment("name2", "text2", "2.jpg");
+    let com3 = new Comment("name3", "text3", "3.jpg");
+    let com4 = new Comment("name4", "text4", "4.jpg");
+    let c = [com1, com2, com3, com4];
+    
+    function Avatar(comments){
+
+        let a = function(){
+            comments.forEach(function(comment){
+                let block = document.createElement("div");
+
+                let title = document.createElement("h3");
+                title.innerHTML = comment.name;
+                block.appendChild(title);
+
+                let descr = document.createElement("p");
+                descr.innerHTML = comment.text;
+                block.appendChild(descr);
+
+                let avatar = document.createElement("img");
+                avatar.src = comment.avatarUrl;
+                block.appendChild(avatar);
+
+                let likes = document.createElement("div");
+                likes.innerHTML = 0;
+                block.appendChild(likes);
+
+                CommentsFeed.appendChild(block);
+
+                block.addEventListener("click", function(){
+                    comment.like();
+                    // console.log(comment.likes);
+                    likes.innerHTML = comment.likes;
+
+                });
+            });
+        }
+        a();
+    }
+
+
+    let avatars = new Avatar(c);
+
+    
+
+
+    </script>
+</body>
+</html>
