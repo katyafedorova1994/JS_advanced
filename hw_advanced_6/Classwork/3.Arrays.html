@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork</title>
+
+    <script>
+
+    /*
+      Задание:
+      1. При помощи методов изложеных ниже, переформатировать ITEA_COURSES в массив который содержит длину строк каждого из элементов.
+      2. Отфильтровать массив ITEA_COURSES по алфавиту.
+          + Бонусный бал. Вывести на страничку списком
+      3. Реализация функции поиска по массиву ITEA_COURSES.
+          + Бонусный бал. Вывести на страничку инпут и кнопку по которой будет срабатывать поиск.
+    */
+
+    const ITEA_COURSES = ["Курс HTML & CSS", "JavaScript базовый курс", "JavaScript продвинутый курс", "JavaScript Professional", "Angular 2.4 (базовый)", "Angular 2.4 (продвинутый)", "React.js", "React Native", "Node.js", "Vue.js"];
+    let a = ITEA_COURSES.map(function(i){
+      return i.length;
+    });
+    console.log(a);
+
+    let sortedItems = ITEA_COURSES.sort(function (a, b) {
+    if (a > b) {
+      return 1;
+    }
+    if (a < b) {
+      return -1;
+    }
+    return 0;
+  });
+
+  console.log(sortedItems);
+
+
+  html = '<ul>';
+    sortedItems.forEach(function(item) {
+      html += '<li>'+ item +'</li>';
+    });
+  html += '</ul>'
+
+  document.write(html);
+
+
+  let input = document.createElement("input");
+  input.type = "text";
+  document.body.appendChild(input);
+
+  let button = document.createElement("button");
+  button.innerHTML = "Find";
+  document.body.appendChild(button);
+
+  button.addEventListener("click", function(){
+    function updateCollection (sortedItems, course) {
+      if (sortedItems.indexOf(course) === -1) {
+        sortedItems.push(course);
+          alert('Оновлений масив курсів : ' + sortedItems);
+      } 
+      else if (sortedItems.indexOf(course) > -1) {
+          alert(course + ' вже існує у лінійці курсів.');
+      }
+    }
+    updateCollection(sortedItems, input.value); 
+  });
+
+
+    /*
+      Задание 2:
+      Написать фильтр массива по:
+      Актеру, продолжительности
+
+      Бонус:
+        Сделать графическую оболочку для программы:
+        - Селект со списком актеров
+        - Селект или инпут с продолжительностью
+        - Результат в виде списка фильмов
+    */
+
+      var stars = ['Elijah Wood', 'Ian McKellen', 'Orlando Bloom','Ewan McGregor',' Liam Neeson', 'Natalie Portman', 'Ewan McGregor', 'Billy Bob Thornton', 'Martin Freeman']
+      var movies = [
+            {
+              name: "Lord of the Rigs",
+              duration: 240,
+              starring: [ 'Elijah Wood', 'Ian McKellen', 'Orlando Bloom']
+            },
+            {
+              name: "Star Wars: Episode I - The Phantom Menace",
+              duration: 136,
+              starring: [ 'Ewan McGregor',' Liam Neeson', 'Natalie Portman']
+            },
+            {
+              name: "Fargo",
+              duration: 100,
+              starring: [ 'Ewan McGregor', 'Billy Bob Thornton', 'Martin Freeman']
+            },
+            {
+            name: "V for Vendetta",
+            duration: 150,
+            starring: [ 'Hugo Weaving', 'Natalie Portman', 'Rupert Graves']
+          }
+        ];
+
+
+      
+
+        var p = movies
+        .filter(function(n) {
+            return n.starring.includes('Hugo Weaving');
+        });
+        console.log(p);
+
+       
+
+        var m = movies
+        .filter(function(n) {
+            return n.duration > 100;
+        });
+        console.log(m);
+
+       
+
+      
+
+  
+
+
+
+    </script>
+</head>
+<body>
+  
+</body>
+</html>

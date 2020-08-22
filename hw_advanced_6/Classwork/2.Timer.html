@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+  
+  </style>
+
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="timer-container">
+        <div id="clockHand"></div>
+    </div>
+       
+    <button id="pauseBtn">pause</button>
+    <button id="continueBtn">continue</button>
+    <button id="resetBtn">reset</button>
+    <button id="directionSwitcher">switch direction</button></br>
+    <span id="timer"></span>   
+</div>
+
+
+      <!--
+        Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+        также добавьте кнопки который останавливают отчет, и запускают его заново и добавьте кнопку обнуляющую отчет.
+        Также попробуйте изменить код так чтобы отчет начиналься с 30 и заканчивалься на 1.
+
+       + бонус: Сделать так что бы на каждый тик (1с/2c) менялся цвет фона. Можно на основе генератора случайного цвета с предудущих уроков.
+       + бонус: Сделать визуализацию стрелки которая идет по кругу
+            document.getElementById("myDIV").style.transform = "rotate(7deg)";
+
+       + бонус: Сделать кнопки которые выбирают режим в котором идет отсчет - обычный от 0 до 30 или реверсивный от 30 до 0
+      -->
+
+      
+      <script>
+       let direction = true;
+        let counter = 0;
+        let timerBlock = document.getElementById('timer');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const continueBtn = document.getElementById('continueBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const switchBtn = document.getElementById('directionSwitcher');
+
+
+        function startTimer() {  // const startTimer = () =>         
+          if(direction == true){ // counter += direction ? 1 : -1; 
+             counter = counter + 1;
+          }
+          else if(direction != true) {
+             counter = counter - 1;
+          }
+            timerBlock.innerText = counter;
+            
+            if(counter == 30 || counter == 0) {
+                direction = !direction;
+            }
+        }
+
+        let timer = setInterval(startTimer, 1000);//neskolko raz cherez sekundu
+
+
+
+        pauseBtn.addEventListener('click', function(){
+            clearInterval(timer);
+        });
+
+        continueBtn.addEventListener('click', () => {
+            timer = setInterval(startTimer, 1000);
+        });
+
+        resetBtn.addEventListener('click', () => {
+            counter = 0;
+        }); 
+
+        switchBtn.addEventListener('click', () => {
+            direction = !direction;
+        });
+
+
+
+      </script>
+</body>
+</html>
