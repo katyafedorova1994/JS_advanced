@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, td{
+            border: 1px solid #000;
+            padding: 13px;
+        }
+
+        .hidden-data{
+            display: none;
+        }
+
+        .show + .hidden-data{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <form id="myForm">
+        <input id = "i" name="name" type="text" />
+        <input id = "i" name="age" type="text" />
+        <input id = "i" name="password" type="password" />
+        <button id="convertToJSON" type="submit">Convert to JSON</button>
+    </form>
+
+    <form id="parseForm">
+        <input name="name" type="text"/>
+        <button id="parseJSON">Parse JSON</button>
+    </form>
+
+    <!-- <script src="async.js"></script> -->
+    <!-- <script src="fetch.js"></script> -->
+    <!-- <script src="json.js"></script>  -->
+</body>
+</html>
